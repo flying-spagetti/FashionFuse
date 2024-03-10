@@ -40,7 +40,7 @@ Empower Your Style, Embrace Your Identity: Where Gen-Z Trends Thrive!
 
 ## Support
 
-To Run this Application Locally 
+Query your doubts or any issues to gnan.lopinti@gmail.com
 
 
 ## To Run this Application Locally
