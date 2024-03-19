@@ -29,7 +29,7 @@ export default function Checkout() {
   const params = useSearchParams();
 
   const publishableKey =
-    "pk_test_51NMv6ZSC6E6fnyMeRIEb9oEXdGRCC9yrBTT4xWHgcjWOuFcqFiAHErvaS50K1hl5t5WJXVGfLLWxvb705IWJhA3300yCcrMnlM";
+    "sk_test_51OuumbSJgVLACXhETSHqWCwya3DLpyUunPNZdfZXDH5jzmWPrio1O96QTvuRrPpAOhYM0QZ2qbLd8WsNCjGX5X8k00GtatXM0p";
   const stripePromise = loadStripe(publishableKey);
 
   console.log(cartItems);
@@ -198,8 +198,8 @@ export default function Checkout() {
     <div>
       <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">
         <div className="px-4 pt-8">
-          <p className="font-medium text-xl">Cart Summary</p>
-          <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-5">
+          <p className="font-medium text-xl text-black">Cart Summary</p>
+          <div className="mt-8 space-y-3 rounded-lg border bg-white px-2 py-4 sm:px-5 ">
             {cartItems && cartItems.length ? (
               cartItems.map((item) => (
                 <div
@@ -211,7 +211,7 @@ export default function Checkout() {
                     alt="Cart Item"
                     className="m-2 h-24 w-28 rounded-md border object-cover object-center"
                   />
-                  <div className="flex w-full flex-col px-4 py-4">
+                  <div className="flex w-full flex-col px-4 py-4 text-black">
                     <span className="font-bold">
                       {item && item.productID && item.productID.name}
                     </span>
@@ -227,11 +227,11 @@ export default function Checkout() {
           </div>
         </div>
         <div className="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
-          <p className="text-xl font-medium">Shipping address details</p>
+          <p className="text-xl font-medium text-black">Shipping address details</p>
           <p className="text-gray-400 font-bold">
             Complete your order by selecting address below
           </p>
-          <div className="w-full mt-6 mr-0 mb-0 ml-0 space-y-6">
+          <div className="w-full mt-6 mr-0 mb-0 ml-0 space-y-6 text-black">
             {addresses && addresses.length ? (
               addresses.map((item) => (
                 <div

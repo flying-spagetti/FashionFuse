@@ -7,7 +7,7 @@ const configOptions = {
 
 const connectToDB = async () => {
   const connectionUrl =
-    "your-mongodb-url";
+    "mongodb+srv://admin:admin@cluster0.xn73mlk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
   mongoose
     .connect(connectionUrl, configOptions)

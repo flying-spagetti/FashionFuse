@@ -21,7 +21,7 @@ export const navOptions = [
   },
   {
     id: "listingKids",
-    label: "kids",
+    label: "Kids",
     path: "/product/listing/kids",
   },
 ];
@@ -177,6 +177,7 @@ export const AvailableSizes = [
   {
     id: "s",
     label: "S",
+  
   },
   {
     id: "m",
@@ -188,18 +189,8 @@ export const AvailableSizes = [
   },
 ];
 
-export const firebaseConfig = {
-  apiKey: "API_KEY",
-  authDomain: "AUTH_DOMAIN",
-  projectId: "PROJECT_ID",
-  storageBucket: "STROAGE_BUCKET",
-  messagingSenderId: "MESSAGING_SENDER_ID",
-  appId: "APP_ID",
-  measurementId: "MEASUREMENT_ID",
-};
-
 export const firebaseStroageURL =
-  "YOUR_FIREBASE_STROAGE_URL";
+  "gs://amazekart-32e8e.appspot.com";
 
 export const addNewAddressFormControls = [
   {
@@ -238,3 +229,12 @@ export const addNewAddressFormControls = [
     componentType: "input",
   },
 ];
+export const firebaseConfig = {
+  apiKey: "AIzaSyAptuqr7D3Ah0NBqhT6eELcvH_THdoSqBE",
+  authDomain: "amazekart-32e8e.firebaseapp.com",
+  projectId: "amazekart-32e8e",
+  storageBucket: "amazekart-32e8e.appspot.com",
+  messagingSenderId: "179671389982",
+  appId: "1:179671389982:web:c6796e8f7b8eee127b9b0f",
+  measurementId: "G-6P6DNMTBM8"
+};

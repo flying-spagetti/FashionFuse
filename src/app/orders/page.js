@@ -46,7 +46,7 @@ export default function Orders() {
 
   if (pageLevelLoader) {
     return (
-      <div className="w-full min-h-screen flex justify-center items-center">
+      <div className="w-full min-h-screen flex justify-center items-center text-black">
         <PulseLoader
           color={"#000000"}
           loading={pageLevelLoader}

@@ -1,5 +1,4 @@
-"use client";
-
+"use client"
 import { GlobalContext } from "@/context";
 import { adminNavOptions, navOptions } from "@/utils";
 import { Fragment, useContext, useEffect } from "react";
@@ -7,6 +6,7 @@ import CommonModal from "../CommonModal";
 import Cookies from "js-cookie";
 import { usePathname, useRouter } from "next/navigation";
 import CartModal from "../CartModal";
+
 
 function NavItems({ isModalView = false, isAdminView, router }) {
   return (
@@ -83,14 +83,17 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="bg-white fixed w-full z-20 top-0 left-0 border-b border-gray-200">
+      
+      
+      <nav className="bg-white fixed w-full z-20 top-0 left-0 border-b border-black-200">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+          
           <div
             onClick={() => router.push("/")}
             className="flex items-center cursor-pointer"
           >
-            <span className="slef-center text-2xl font-semibold whitespace-nowrap">
-              Ecommercery
+            <span className="self-center text-2xl font-semibold whitespace-nowwrap text-black">
+              FashionKart
             </span>
           </div>
           <div className="flex md:order-2 gap-2">
@@ -180,6 +183,12 @@ export default function Navbar() {
           </div>
           <NavItems router={router} isAdminView={isAdminView} />
         </div>
+        <div className="bg-blue-100 text-black py-1 px-8 absolute top-15 left-0 w-full z-10 text">
+      <marquee behavior="scroll" direction="left" scrollamount="10">
+        <span className="inline-block align-bottom">The Summer Sale Collection is live Now. Go Grab the best deals right now!!</span>
+      </marquee>
+    </div>
+        
       </nav>
       <CommonModal
         showModalTitle={false}
@@ -193,7 +202,9 @@ export default function Navbar() {
         show={showNavModal}
         setShow={setShowNavModal}
       />
+      
       {showCartModal && <CartModal />}
+      
     </>
   );
 }
