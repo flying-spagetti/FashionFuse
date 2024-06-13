@@ -4,6 +4,14 @@ import { GlobalContext } from "@/context";
 import { getAllAdminProducts } from "@/services/product";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import InstagramIcon from '@mui/icons-material/Instagram';
+import XIcon from '@mui/icons-material/X';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+
 
 
 
@@ -26,21 +34,42 @@ export default function Home() {
   useEffect(() => {
     getListOfProducts();
   }, []);
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 4, 
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 768, 
+        settings: {
+          slidesToShow: 2, 
+        },
+      },
+      {
+        breakpoint: 576, 
+        settings: {
+          slidesToShow: 1, 
+        },
+      },
+    ],
+  };
 
-  console.log(products);
+  //console.log(products);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <section className="">
+      <section className="carousel-container">
             <div className="grid max-w-screen-xl px-4 py-8 mx-suto  lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
               <div className="mr-auto place-self-center lg:col-span-7">
-              <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-black">
-                      Best Fashion Collection
-                  </h1>
-
-                <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">
-                  The best of deals right in front you. Delivered right at your doorstep
-                </p>
+              <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-transparent bg-gradient-to-r from-purple-400 via-red-500 to-orange-500 bg-clip-text animate-gradientAnimation">
+                Best Fashion Collection
+                </h1>
+                <p className="max-w-2xl mb-6 font-dark text-gray-900 lg:mb-8 md:text-lg lg:text-xl transition-opacity duration-1000 transistion-opacity">
+                The best of deals right in front you. Delivered right at your doorstep
+                  </p>
 
                 <button
                   type="button"
@@ -50,20 +79,45 @@ export default function Home() {
                   Explore Shop Collection
                 </button>
               </div>
-              <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
+              <div className="hidden lg:mt-0 lg:col-span-4 lg:flex">
                 <img
-                  src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+                  src="https://i.pinimg.com/originals/74/14/ff/7414ffc5c0163dadc1b9cb391b26b9de.jpg"
                   alt="Explore Shop Collection"
                 />
               </div>
-            </div>
+              </div>
+              <div className="max-w-screen-xl px-4 py-8 mx-auto sm:py-12 sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold text-gray-900 text-center mb-4">
+            Trending Products
+          </h2>
+          <Slider {...settings}>
+            {products && products.length
+              ? products.slice(5, 13).map((productItem) => ( // Adjust the number of products to display based on your needs
+                  <div key={productItem._id} className="p-4 rounded-md">
+                    <img
+                      src={productItem.imageUrl}
+                      alt={productItem.name}
+                      className="object-cover w-full h-56 rounded-md" // Adjust height for tile-like aspect ratio
+                    />
+                    <h3 className="mt-2 text-lg font-medium text-gray-900">
+                      {productItem.name}
+                    </h3>
+                    
+                    <p className="text-gray-700 text-sm">
+                      {productItem.description.slice(0, 50) + "..."}
+                    </p>
+                  </div>
+                ))
+              : null}
+          </Slider>
+        </div>
         <div className="max-w-screen-xl px-4 py-8 mx-auto sm:py-12 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:items-stretch">
             <div className="grid p-6 bg-gray-100 rounded place-content-center sm:p-8">
               <div className="max-w-md mx-auto text-center lg:text-left">
                 <div>
                   <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">
-                    Summer Sale Collection
+                    Exclusive Summer Collection
                   </h2>
                 </div>
                 <button
@@ -79,7 +133,7 @@ export default function Home() {
                 {products && products.length
                   ? products
                       .filter((item) => item.onSale === "yes")
-                      .splice(0, 2)
+                      .splice(0, 6)
                       .map((productItem) => (
                         <li
                           onClick={() =>
@@ -172,13 +226,38 @@ export default function Home() {
           </ul>
         </div>
         
-      </section>
-      <footer className="bg-white-900 text-black py-6 text-center w-full">
-        <div className="container mx-auto">
-          <p>&copy; 2024 FashionKart. All rights reserved.</p>
-          <p>Developed and maintained by Gnaneswar Lopinti</p>
+        <footer className="bg-gray-300 text-black py-8">
+        <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:justify-between">
+            <div className="mb-8 md:mb-0">
+              <h3 className="text-xl font-semibold mb-4">Connect with the Team</h3>
+              <ul className="flex flex-wrap list-none">
+                <li className="mr-6 mb-4"><a href="https://www.linkedin.com/in/gnaneswar-lopinti-5bb480109/" target="_blank" rel="noopener noreferrer" className="text-black-300 hover:text-white">LinkedIn<LinkedInIcon/></a></li>
+                <li className="mr-6 mb-4"><a href="https://github.com/lGnan-hub" target="_blank" rel="noopener noreferrer" className="text-black-300 hover:text-white">GitHub<GitHubIcon/></a></li>
+               <li className="mr-6 mb-4"><a href="https://twitter.com/ImGnAn_30" target="_blank" rel="noopener noreferrer" className="text-black-300 hover:text-white">Twitter<XIcon/></a></li>
+               
+                <li className="mb-4"><a href="https://www.instagram.com/___gnan___/" target="_blank" rel="noopener noreferrer" className="text-black-300 hover:text-white">Instagram<InstagramIcon/></a></li>
+                
+              </ul>
+              
+            
+            </div>
+            <div>
+              <p className="text-lg mb-4">Designed and Developed for MERN SDP Project </p>
+            <p>An E-Commerce application for Gen-Z </p>
+            <div className="text-xs">The copyrights of all images belong to their respective owners.
+            </div>
+          <div className="text-xs ">
+          The content of this site is copyright-protected and is the property of FashionKart Dev.
+          </div>
+          </div>
+         </div>
         </div>
       </footer>
+
+        
+      </section>
+      
     </main>
     
   );

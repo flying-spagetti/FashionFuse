@@ -29,10 +29,11 @@ export default function Checkout() {
   const params = useSearchParams();
 
   const publishableKey =
-    "sk_test_51OuumbSJgVLACXhETSHqWCwya3DLpyUunPNZdfZXDH5jzmWPrio1O96QTvuRrPpAOhYM0QZ2qbLd8WsNCjGX5X8k00GtatXM0p";
+    "pk_test_51OuumbSJgVLACXhEhOrNbADB5u1ZS82cUX2kx4kQ4gARD601JhWu2qzTpUDJNpjEdokXon9OvyVYfEDf7wgHzBGk0025og9nvZ";
   const stripePromise = loadStripe(publishableKey);
 
-  console.log(cartItems);
+  //console.log(cartItems);
+  
 
   async function getAllAddresses() {
     const res = await fetchAllAddresses(user?._id);
@@ -50,6 +51,9 @@ export default function Checkout() {
     async function createFinalOrder() {
       const isStripe = JSON.parse(localStorage.getItem("stripe"));
 
+      if (!params || typeof params.get !== "function") {
+        return <div>Loading...</div>
+      }
       if (
         isStripe &&
         params.get("status") === "success" &&
@@ -148,7 +152,7 @@ export default function Checkout() {
       sessionId: res.id,
     });
 
-    console.log(error);
+//    console.log(error);
   }
 
   console.log(checkoutFormData);
@@ -193,7 +197,7 @@ export default function Checkout() {
       </div>
     );
   }
-
+  
   return (
     <div>
       <div className="grid sm:px-10 lg:grid-cols-2 lg:px-20 xl:px-32">

@@ -24,7 +24,7 @@ function NavItems({ isModalView = false, isAdminView, router }) {
         {isAdminView
           ? adminNavOptions.map((item) => (
               <li
-                className="cursor-pointer block py-2 pl-3 pr-4 text-gray-900 rounded md:p-0"
+                className="cursor-pointer block py-2 pl-3 pr-4 text-black-900 rounded md:p-0"
                 key={item.id}
                 onClick={() => router.push(item.path)}
               >
@@ -61,7 +61,7 @@ export default function Navbar() {
   const pathName = usePathname();
   const router = useRouter();
 
-  console.log(currentUpdatedProduct, "navbar");
+  //console.log(currentUpdatedProduct, "navbar");
 
   useEffect(() => {
     if (
@@ -174,9 +174,9 @@ export default function Navbar() {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 ></path>
               </svg>
             </button>
